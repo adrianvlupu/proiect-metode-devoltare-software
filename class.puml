@@ -1,0 +1,50 @@
+@startuml
+
+class Dummy {
+    -field1
+    #field2
+    ~method1()
+    +method2()
+}
+
+class Foo1 {
+    You can use
+    several lines
+    ..
+    as you want
+    and group
+    ==
+    things together.
+    __
+    You can have as many groups
+    as you want
+    --
+    End of class
+}
+
+class User {
+    .. Simple Getter ..
+    + getName()
+    + getAddress()
+    .. Some setter ..
+    + setName()
+    __ private data __
+    int age
+    -- encrypted --
+    String password
+}
+
+class Object << general >>
+Object <|--- ArrayList
+
+note top of Object : In java, every class\nextends this one.
+
+note "This is a floating note" as N1
+note "This note is connected\nto several objects." as N2
+Object .. N2
+N2 .. ArrayList
+
+class Foo
+note left: On last defined class
+
+@enduml
