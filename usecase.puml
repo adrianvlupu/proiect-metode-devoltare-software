@@ -6,13 +6,13 @@ Utilizator --> (Modifica datele)
 Utilizator --> (Resetare parola)
 
 rectangle "Proprietar / Imputernicit (total)" as Proprietar {
-    Utilizator --> (Adaugare folder/fisier)
-    Utilizator --> (Modificare folder/fisier)
-    Utilizator --> (Stergere folder/fisier)
-    Utilizator --> (Impartire folder/fisier)
+    Utilizator --> (Adaugare dosar/fisier)
+    Utilizator --> (Modificare dosar/fisier)
+    Utilizator --> (Stergere dosar/fisier)
+    Utilizator --> (Impartire dosar/fisier)
     rectangle "Imputernicit (vizualizare)" as Imputernicit {
-        Utilizator ---> (Vizualizare folder/fisier)
-        Utilizator ---> (Descarcare folder/fisier)
+        Utilizator ---> (Vizualizare dosar/fisier)
+        Utilizator ---> (Descarcare dosar/fisier)
     }
 }
 

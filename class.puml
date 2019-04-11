@@ -1,50 +1,60 @@
 @startuml
 
-class Dummy {
-    -field1
-    #field2
-    ~method1()
-    +method2()
+class Utilizator {
+    + ID : int
+    + Nume : string
+    + Prenume : string
+    + Email : string
+    - HashParola : string
+    + InregistratLa: DateTime
+
+    bool VerificareParola(email, parola)
 }
 
-class Foo1 {
-    You can use
-    several lines
-    ..
-    as you want
-    and group
-    ==
-    things together.
-    __
-    You can have as many groups
-    as you want
-    --
-    End of class
+class Fisier {
+    + Denumire : string
+    + Tip : string
+    + CreatLa : DateTime
+    + Proprietar : Utilizator
+    + Dosar : Nullable<Dosar>
+    + Impartit : List<Alocare>
+    + Editari : List<Editare>
+    - Sters : bool
+
+    + void Imparte(Utilizator)
+    + void Sterge()
+    + void Modifica(Fisier)
 }
 
-class User {
-    .. Simple Getter ..
-    + getName()
-    + getAddress()
-    .. Some setter ..
-    + setName()
-    __ private data __
-    int age
-    -- encrypted --
-    String password
+class Alocare {
+    + UtilizatorID : int
+    + PermisaEditarea : bool
 }
 
-class Object << general >>
-Object <|--- ArrayList
+class Editare {
+    + UtilizatorID : int
+    + Data : DateTime
+}
 
-note top of Object : In java, every class\nextends this one.
+class Dosar {
+    + Denumire : string
+    + CreatLa : DateTime
+    + Proprietar : Utilizator
+    + Impartit : List<Alocare>
+    + Editari : List<Editare>
+    - Sters : bool
+    
+    + byte[] DescarcareZip()
+    + void Sterge()
+    + void Modifica(Dosar)
+    + void Imparte(Utilizator)
+}
 
-note "This is a floating note" as N1
-note "This note is connected\nto several objects." as N2
-Object .. N2
-N2 .. ArrayList
-
-class Foo
-note left: On last defined class
-
+Utilizator "1" *-- "*" Fisier
+Utilizator "1" *-- "*" Dosar
+Dosar "1" *-- "*" Alocare
+Dosar "1" *-- "*" Editare
+Dosar "1" *-- "*" Fisier
+Fisier "1" *-- "*" Alocare
+Fisier "1" *-- "*" Editare
 @enduml
