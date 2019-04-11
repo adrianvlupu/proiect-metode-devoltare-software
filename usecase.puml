@@ -1,20 +1,48 @@
 @startuml
-:Main Admin: as Admin
-(Use the application) as (Use)
 
-User -> (Start)
-User --> (Use)
+Utilizator --> (Creare cont)
+Utilizator --> (Login)
+Utilizator --> (Modifica datele)
+Utilizator --> (Resetare parola)
+Utilizator ---> (Proprietar)
+Utilizator ---> (Imputernicit)
+Proprietar ---> (Adaugare folder/fisier)
+Proprietar ---> (Modificare folder/fisier)
+Proprietar ---> (Stergere folder/fisier)
+Proprietar ---> (Vizualizare folder/fisier)
+Proprietar ---> (Descarcare folder/fisier)
+Proprietar ---> (Impartire folder/fisier)
+Imputernicit --> (Drepturi totale)
+Imputernicit --> (Drepturi de vizualizare)
+(Drepturi de vizualizare) --> (Vizualizare folder/fisier)
+(Drepturi de vizualizare) --> (Descarcare folder/fisier)
+(Drepturi totale) --> (Adaugare folder/fisier)
+(Drepturi totale) --> (Modificare folder/fisier)
+(Drepturi totale) --> (Stergere folder/fisier)
+(Drepturi totale) --> (Vizualizare folder/fisier)
+(Drepturi totale) --> (Descarcare folder/fisier)
+(Drepturi totale) --> (Impartire folder/fisier)
+' actor Utilizator as u 
+' (System) as sys
 
-Admin ---> (Use)
+' u -> sys
 
-note right of Admin : This is an example.
+' :Main Admin: as Admin
+' (Use the application) as (Use)
 
-note right of (Use)
-    A note can also
-    be on several lines
-end note
+' User -> (Start)
+' User --> (Use)
 
-note "This note is connected\nto several objects." as N2
-(Start) .. N2
-N2 .. (Use)
+' Admin ---> (Use)
+
+' note right of Admin : This is an example.
+
+' note right of (Use)
+'     A note can also
+'     be on several lines
+' end note
+
+' note "This note is connected\nto several objects." as N2
+' (Start) .. N2
+' N2 .. (Use)
 @enduml
