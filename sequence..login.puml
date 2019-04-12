@@ -1,0 +1,28 @@
+@startuml
+
+title Login
+
+actor "Utilizator" as user
+participant "Website" as ui
+database "Baza de date" as db
+' database "Disc fizic" as disk
+
+user -> ui: login (user,pass)
+activate ui
+ui -> db: cautare utilizator
+alt eroare
+db --> ui: utilizator inexistent
+ui --> user: pagina eroare login
+else eroare
+db --> ui: date utilizator
+ui -> ui: validare hash parola
+ui --> user: pagina eroare login
+else success
+db --> ui: date utilizator
+ui -> ui: validare hash parola
+ui -> db: salveaza sesiune
+ui -> db: cautare fisiere utilizator
+db --> ui: fisiere
+ui --> user: homepage
+end
+@enduml

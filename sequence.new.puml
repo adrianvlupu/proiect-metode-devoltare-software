@@ -1,0 +1,23 @@
+@startuml
+
+title Fisier Nou
+
+actor "Utilizator" as user
+participant "Website" as ui
+database "Baza de date" as db
+database "Disc fizic" as disk
+
+user -> ui: fisier nou (document)
+ui -> ui: validare date de intrare
+alt eroare
+ui -> user: eroare validare
+else succes
+ui -> db: fisier nou
+ui -> disk: salveaza document
+disk --> ui: succes
+ui -> db: cautare fisiere utilizator
+db --> ui: lista fisiere
+ui --> user: pagina lista fisiere
+end
+
+@enduml
