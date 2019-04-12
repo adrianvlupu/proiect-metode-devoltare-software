@@ -1,5 +1,7 @@
 @startuml
 
+title Relatie entitati
+
 class Utilizator {
     + ID : int
     + Nume : string

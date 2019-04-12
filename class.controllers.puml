@@ -1,0 +1,47 @@
+@startuml
+
+class AccountController{
+    Login()
+    Logout()
+    Register()
+    ResetPassword()
+    GetUserDetails()
+    Edit()
+}
+class User
+
+AccountController --> User
+
+class HomeController{
+    GetOwnDocuments()
+    SharedByMe()
+    SharedWithMe()
+}
+class File
+class Folder
+
+HomeController --> Folder
+HomeController --> File
+HomeController -> User
+
+class FolderController{
+    GetFiles()
+    AddFiles()
+    DeleteFile()
+    Download()
+    Share()
+    Create()
+    Edit()
+}
+FolderController --> Folder
+
+class FileController{
+    Delete()
+    Download()
+    Edit()
+    Add()
+    Share()
+}
+FileController --> File
+
+@enduml
