@@ -1,0 +1,31 @@
+@startuml
+
+title Creare cont
+
+actor "Utilizator" as user
+participant "Website" as ui
+database "Baza de date" as db
+participant "Email Server" as email
+
+user -> ui: Introducere date (nume, email, parola)
+ui -> ui: validare date (format email, parola)
+alt eroare
+    ui --> user: eroare validare
+else succes
+    ui -> db: salveaza date cont nou
+    db --> ui: success
+    ui -> email: link activare cont (email)
+    email -X user: trimitere mail
+    ...
+    user -> ui: accesare link activare cont
+    ui -> db: validare link
+    alt eroare
+        db --> ui: nu a fost gasit
+        ui --> user: pagina eroare
+    else success
+        db --> ui: success
+        ui --> user: homepage cont nou
+    end
+end
+
+@enduml
