@@ -1,0 +1,16 @@
+@startuml
+
+start
+:AccountController.Login(email, password);
+:User.Find(email);
+if(User) then (false)
+	:Bad user/pass;
+else (true)
+	:h = hash(password);
+	if(h == User.hash) then (false)
+		:Bad user/pass;
+	endif
+endif
+stop
+
+@enduml

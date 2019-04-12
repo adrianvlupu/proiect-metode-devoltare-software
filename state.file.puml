@@ -1,0 +1,19 @@
+@startuml
+
+title Stari Fisier
+
+[*] --> Nou
+Nou: Documentul e salvat pe disk
+Nou: Fisierul are proprietar si denumire
+Nou --> Modificat
+Nou --> Impartit
+Impartit: Fisierul are minim un alt utilizator asociat
+Nou ---> Sters
+Sters: Marcat ca fiind sters
+Sters: Poate fi restaurat
+
+Impartit --> Sters
+Modificat --> Sters
+Sters --> Modificat
+Sters --> [*]
+@enduml
